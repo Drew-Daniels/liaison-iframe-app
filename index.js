@@ -1,4 +1,4 @@
-import { IFrame } from 'https://unpkg.com/liaison-core/lib/index.js'
+import { IFrame } from 'https://unpkg.com/liaison-core@latest/lib/index.js'
 
 const iframe = IFrame({
     // parentOrigin: 'https://drew-daniels.github.io/liaison-parent-app',
