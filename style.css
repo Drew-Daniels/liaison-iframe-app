@@ -1,3 +1,8 @@
 * {
-    background-color: mediumseagreen
+    background-color: mediumseagreen;
+    font-family: 'Roboto', sans-serif;
+}
+
+.iframe-window-header {
+    font-weight: 300;
 }
