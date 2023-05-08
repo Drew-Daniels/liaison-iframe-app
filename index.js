@@ -25,7 +25,6 @@ const iframe = IFrame({
         }
     }
 });
-iframe.init();
 
 const buttonSync = document.getElementById('iframe-btn-sync');
 buttonSync.onclick = () => {
