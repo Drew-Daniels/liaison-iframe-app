@@ -8,30 +8,20 @@ const iframe = IFrame({
     // parentOrigin: 'https://drew-daniels.github.io/liaison-parent-app',
     parentOrigin: 'http://localhost:5500',
     effects: {
-        sayHiFromIFrame: () => {
-            const messagesList = document.getElementById('sync-messages');
-            const message = document.createElement('li');
-            message.innerText = 'Synchronous message received from parent';
-            message.classList.add('message');
-            messagesList.appendChild(message);
+        onTokenReceived: ({ args: { token }, callParentEffect }) => {
+            localStorage.setItem('token', token);
+            console.log('iframe saved token')
+            callParentEffect({ name: 'onIFrameUserLoggedIn', args: {} });
         },
-        sayHiFromIFrameAsync: async () => {
-            await timeout(3000);
-            const messagesList = document.getElementById('async-messages');
-            const message = document.createElement('li');
-            message.innerText = 'Asynchronous message received from parent';
-            message.classList.add('message');
-            messagesList.appendChild(message);
+        onLogoutRequested: ({ callParentEffect }) => {
+            localStorage.removeItem('token');
+            console.log('iframe removed token')
+            callParentEffect({ name: 'onIFrameLogoutComplete', args: {} });
         }
     }
 });
 
-const buttonSync = document.getElementById('iframe-btn-sync');
-buttonSync.onclick = () => {
-    iframe.callParentEffect({ name: 'sayHiFromParentSync', args: {} })
-}
-
-const buttonAsync = document.getElementById('iframe-btn-async');
-buttonAsync.onclick = () => {
-    iframe.callParentEffect({ name: 'sayHiFromParentAsync', args: {} })
+const requestTokenButton = document.getElementById('request-token-button');
+requestTokenButton.onclick = () => {
+    iframe.callParentEffect({ name: 'onTokenRequested', args: {} });
 }
