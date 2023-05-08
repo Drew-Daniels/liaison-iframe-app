@@ -1,15 +1,36 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+        <!-- Icons -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+        <!-- My Styling -->
         <link rel="stylesheet" href="style.css">
         <script defer type="module" src="./index.js">
         </script>
     </head>
     <body>
-        <h2 class="iframe-window-header">iframe</h2>
-        <button id="iframe-btn">Send Message to Parent</button>
+        <h2 class="iframe-header">iframe</h2>
+        <div class="btns">
+            <button id="iframe-btn-sync" class="btn">
+                Synchronously Send Message to Parent
+                <span class="material-symbols-outlined">
+                    step_out
+                </span>
+            </button>
+            <button id="iframe-btn-async" class="btn">
+                Asynchronously Send Message to Parent
+                <span class="material-symbols-outlined">
+                    step_out
+                </span>
+            </button>
+        </div>
+        <h3 class="iframe-header">Synchronous Messages from Parent</h3>
+        <ul id="sync-messages" class="messages"></ul>
+        <h3 class="iframe-header">Asynchronous Messages from Parent</h3>
+        <ul id="async-messages" class="messages"></ul>
     </body>
 </html>
